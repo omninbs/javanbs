@@ -10,13 +10,13 @@ public class NBSNote {
    private int tick;
 
    public NBSNote(int instrument, int key, int pitch, int volume) {
-      instrument = instrument;
-      key = key;
-      pitch = pitch;
-      volume = volume;
+      setInstrument(instrument);
+      setKey(key);
+      setPitch(pitch);
+      setVolume(volume);
 
-      layer = -1;
-      tick = -1;
+      setLayer(-1);
+      setTick(-1);
    }
 
    public static List<NBSNote> readNotes(DataInputStream dis) throws IOException {
@@ -31,15 +31,15 @@ public class NBSNote {
    // setters
    public void setVolume(int newVolume) {this.volume = newVolume}
 
-   public void setVolume(int newPitch) {this.pitch = newPitch}
+   public void setPitch(int newPitch) {this.pitch = newPitch}
 
-   public void setVolume(int newInstrument) {this.instrument = newInstrument}
+   public void setInstrument(int newInstrument) {this.instrument = newInstrument}
 
-   public void setVolume(int newKey) {this.key = newKey}
+   public void setKey(int newKey) {this.key = newKey}
 
-   public void setVolume(int newLayer) {this.layer = newLayer}
+   public void setLayer(int newLayer) {this.layer = newLayer}
 
-   public void setVolume(int newTick) {this.tick = newTick}
+   public void setTick(int newTick) {this.tick = newTick}
 
 
    // getters
