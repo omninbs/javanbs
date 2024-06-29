@@ -10,9 +10,9 @@ public class NBSSong {
    public NBSSong(String name) {
       instruments = new ArrayList<>();
       layers = new ArrayList<>();
-      layers.add(new NBSLayer());
+      addLayer(new NBSLayer(), 0);
       notes = new ArrayList<>();
-      header = new NBSHeader();
+      header = new NBSHeader(name);
    }
 
    public void addNote(NBSNote newNote, int tick, int layer) {
