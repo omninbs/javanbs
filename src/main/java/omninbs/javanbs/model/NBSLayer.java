@@ -10,9 +10,15 @@ public class NBSLayer {
 
    public void setLock(bool newLock) {this.lock = lock}
 
-   public void setVolume(int newVolume) {this.volume = newVolume}
+   public void setVolume(int newVolume) {
+      if (0 > newVolume || newVolume > 100) {throw new IllegalArgumentException("volume needs to be number between 0 and 100");}
+      this.volume = newVolume;
+   }
 
-   public void setStereo(int newStereo) {this.stereo = newStereo}
+   public void setStereo(int newStereo) {
+      if (-100 > newStereo || newStereo >  100) {throw new IllegalArgumentException("stereo needs to be a number between -100 and 100");}
+      this.stereo = newStereo;
+   }
 
 
    // getters
