@@ -16,6 +16,8 @@ public class NBSSong {
    }
 
    public void addNote(NBSNote newNote, int tick, int layer) {
+      if tick < 0 {throw new IllegalArgumentException("tickId can not be less then 0")}
+
       newNote.tick = tick;
       newNote.layer = layer;
 
@@ -32,6 +34,8 @@ public class NBSSong {
    }
 
    public void addLayer(NBSLayer newLayer, int id) {
+      if id < 0 {throw new IllegalArgumentException("layerId can not be less then 0")}
+
       newLayer.id = id;
       
       for (int i = 0; i < layers.size(); i++) {
@@ -43,6 +47,8 @@ public class NBSSong {
 
 
    public void addInstrument(NBSInstrument newInstrument, int id) {
+      if id < 0 {throw new IllegalArgumentException("instrumentId can not be less then 0")}
+
       newInstrument.id = id;
       
       for (int i = 0; i < layers.size(); i++) {
