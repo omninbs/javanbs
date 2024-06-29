@@ -4,6 +4,12 @@ public class NBSLayer {
    private int volume;
    private int stereo;
 
+   public NBSLayer(String name) {
+      this.name = name;
+      this.lock = false;
+      this.volume = 100;
+      this.stereo = 0;
+   }
 
    // setters
    public void setName(String newName) {this.name = newName}
