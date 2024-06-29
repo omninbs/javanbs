@@ -12,6 +12,25 @@ public class NBSInstrument {
    }
 
 
+   public static NBSInstrument readInstrument(DataInputStream dis, int version) throws IOException {
+      NBSInstrument instrument = new NBSInstrument();
+
+      instrument.name = NBSReader.readString(dis);
+      instrument.file = NBSReader.readString(dis);
+      layer.key = NBSReader.readBytes(dis, 1);
+      layer.piano = NBSReader.readBytes(dis, 1);
+
+      return layer
+   }
+   
+   public void writeLayer(DataInputStream dis) throws IOException {
+      NBSWriter.writeString(dis, this.name);
+      NBSWriter.writeString(dis, this.file);
+      NBSWriter.writeBytes(dis, this.key, 1);
+      NBSWriter.writeBytes(dis, this.piano, 1);
+   }
+
+
    // setters
    public void setName(string name) {this.name = name;}
 

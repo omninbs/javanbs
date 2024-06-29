@@ -11,6 +11,28 @@ public class NBSLayer {
       this.stereo = 0;
    }
 
+
+   public static NBSLayer readLayer(DataInputStream dis, int version) throws IOException {
+      NBSLayer layer = new NBSLayer();
+
+      layer.name = NBSReader.readString(dis);
+      if (version >= 4) {layer.lock = NBSReader.readBytes(dis, 1);}
+      else {layer.lock = false;}
+      layer.volume = NBSReader.readBytes(dis, 1);
+      if (version >= 2) {layer.panning = NBSReader.readBytes(dis, 1);}
+      else {layer.panning = 0;}
+
+      return layer
+   }
+   
+   public void writeLayer(DataInputStream dis) throws IOException {
+      NBSWriter.writeString(dis, this.name);
+      if (version >= 4) {NBSWriter.writeBytes(dis, this.lock, 1);}
+      NBSWriter.writeBytes(dis, this.volume, 1);
+      if (version >= 2) {NBSWriter.writeBytes(dis, this.panning, 1);}
+   }
+
+
    // setters
    public void setName(String newName) {this.name = newName}
 

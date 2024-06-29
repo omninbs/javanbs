@@ -1,13 +1,5 @@
-public enum Binary {
-    Byte,
-    UByte,
-    Short,
-    Integer,
-    String
-}
-
 public class NBSWriter {
-   public static void writeBytes(DataInputStream dis, int data, Binary type) throws IOException {
+   public static void writeBytes(DataInputStream dis, int data, int type) throws IOException {
       
    }
 
