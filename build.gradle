@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'omninbs.javanbs'
+version '1.0.0'
+
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Add your dependencies here
+}
+
+jar {
+    manifest {
+        attributes(
+            'Implementation-Title': 'JavaNBS',
+            'Implementation-Version': version
+        )
+    }
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+

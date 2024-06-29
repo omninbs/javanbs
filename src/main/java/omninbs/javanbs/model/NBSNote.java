@@ -1,3 +1,5 @@
+package omninbs.javanbs.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +39,8 @@ public class NBSNote {
    }
 
    public void setPitch(int newPitch) {
-      if (-32768 > newPitch || newpitch > 32,768) {throw new IllegalArgumentException("pitch needs to be a number between -32,768 and 32,768");}
-      this.pitch = newPitch
+      if (-32768 > newPitch || newpitch > 32768) {throw new IllegalArgumentException("pitch needs to be a number between -32,768 and 32,768");}
+      this.pitch = newPitch;
    }
 
    public void setInstrument(int newInstrument) {

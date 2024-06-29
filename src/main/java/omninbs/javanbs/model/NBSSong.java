@@ -1,3 +1,5 @@
+package omninbs.javanbs.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class NBSSong {
    }
 
    public void addNote(NBSNote newNote, int tick, int layer) {
-      if tick < 0 {throw new IllegalArgumentException("tickId can not be less then 0")}
+      if (tick < 0) {throw new IllegalArgumentException("tickId can not be less then 0");}
 
       newNote.tick = tick;
       newNote.layer = layer;
@@ -34,35 +36,35 @@ public class NBSSong {
    }
 
    public void addLayer(NBSLayer newLayer, int id) {
-      if id < 0 {throw new IllegalArgumentException("layerId can not be less then 0")}
+      if (id < 0) {throw new IllegalArgumentException("layerId can not be less then 0");}
 
       newLayer.id = id;
       
       for (int i = 0; i < layers.size(); i++) {
-         NBSLayer layer = layers.get(i)
-         if (id-1 == i) {throw new IllegalArgumentException("id already exists")}
+         NBSLayer layer = layers.get(i);
+         if (id-1 == i) {throw new IllegalArgumentException("id already exists");}
          if (id == i) {layers.add(i-1, newLayer); break;}
       }
    }
 
 
    public void addInstrument(NBSInstrument newInstrument, int id) {
-      if id < 0 {throw new IllegalArgumentException("instrumentId can not be less then 0")}
+      if (id < 0) {throw new IllegalArgumentException("instrumentId can not be less then 0");}
 
       newInstrument.id = id;
       
       for (int i = 0; i < layers.size(); i++) {
-         NBSInstrument instrument = instruments.get(i)
-         if (id-1 == i) {throw new IllegalArgumentException("id already exists")}
+         NBSInstrument instrument = instruments.get(i);
+         if (id-1 == i) {throw new IllegalArgumentException("id already exists");}
          if (id == i) {instruments.add(i-1, newInstrument); break;}
       }
    }
 
-   public NBSHeader getHeader() {return header}
+   public NBSHeader getHeader() {return header;}
    
-   public List<NBSInstrument> getInstruments() {return instruments}
+   public List<NBSInstrument> getInstruments() {return instruments;}
    
-   public List<NBSLayer> getLayers() {return layers}
+   public List<NBSLayer> getLayers() {return layers;}
    
-   public ListNBSNote<> getNotes() {return notes}
+   public List<NBSNote> getNotes() {return notes;}
 }

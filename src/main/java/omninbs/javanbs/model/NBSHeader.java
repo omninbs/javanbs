@@ -1,3 +1,5 @@
+package omninbs.javanbs.model;
+
 public class NBSHeader {
    private int version;
    private int defaultInstruments;
@@ -224,5 +226,4 @@ public class NBSHeader {
     public int getLoopStart() {
         return loopStart;
     }
-}
 }

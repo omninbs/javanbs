@@ -1,3 +1,5 @@
+package omninbs.javanbs.model;
+
 public class NBSInstrument {
    private String name;
    private String file;
@@ -8,7 +10,7 @@ public class NBSInstrument {
       this.name = name;
       this.file = file;
       this.key = key;
-      this.piano = piano
+      this.piano = piano;
    }
 
 
@@ -20,7 +22,7 @@ public class NBSInstrument {
       layer.key = NBSReader.readBytes(dis, 1);
       layer.piano = NBSReader.readBytes(dis, 1);
 
-      return layer
+      return instrument;
    }
    
    public void writeLayer(DataInputStream dis) throws IOException {
@@ -42,11 +44,11 @@ public class NBSInstrument {
 
 
    // getters
-   public string getName() {return name}
+   public string getName() {return name;}
 
-   public string getFile() {return file}
+   public string getFile() {return file;}
 
-   public int getKey() {return key}
+   public int getKey() {return key;}
    
-   public bool getPiano() {return piano}
+   public bool getPiano() {return piano;}
 }

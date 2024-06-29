@@ -1,3 +1,5 @@
+package omninbs.javanbs;
+
 public class NBSReader {
    public static int readBytes(DataInputStream dis, int bytes) throws IOException {
       

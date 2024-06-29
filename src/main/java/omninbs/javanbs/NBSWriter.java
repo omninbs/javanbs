@@ -1,3 +1,5 @@
+package omninbs.javanbs;
+
 public class NBSWriter {
    public static void writeBytes(DataInputStream dis, int data, int type) throws IOException {
       
@@ -7,7 +9,7 @@ public class NBSWriter {
       
    }
 
-   public static void writeSong(DataInputStream dis, NBSong song, int version) throws IOException {
+   public static void writeSong(DataInputStream dis, NBSSong song, int version) throws IOException {
       
    }
 }
