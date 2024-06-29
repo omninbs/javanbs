@@ -1,5 +1,13 @@
 package omninbs.javanbs.model;
 
+import omninbs.javanbs.model.NBSHeader;
+import omninbs.javanbs.model.NBSNote;
+import omninbs.javanbs.model.NBSLayer;
+import omninbs.javanbs.model.NBSInstrument;
+
+import java.io.DataInputStream;
+import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,15 +28,15 @@ public class NBSSong {
    public void addNote(NBSNote newNote, int tick, int layer) {
       if (tick < 0) {throw new IllegalArgumentException("tickId can not be less then 0");}
 
-      newNote.tick = tick;
-      newNote.layer = layer;
+      newNote.setTick(tick);
+      newNote.setLayer(layer);
 
       for (int i = 0; i < notes.size(); i++) {
-         Note note = notes.get(i);
+         NBSNote note = notes.get(i);
          
-         if (note.tick == newNote.tick && note.layer == newNote.layer) {throw new IllegalArgumentException("note already exists");}
+         if (note.getTick() == tick && note.getLayer() == layer) {throw new IllegalArgumentException("note already exists");}
 
-         if ((note.tick == newNote.tick && note.layer > newNote.layer) || (note.tick > newNote.tick)) {
+         if ((note.getTick() == tick && note.getLayer() > layer) || (note.getTick() > tick)) {
             notes.add(i-1, newNote);
             break;
          }
@@ -38,7 +46,7 @@ public class NBSSong {
    public void addLayer(NBSLayer newLayer, int id) {
       if (id < 0) {throw new IllegalArgumentException("layerId can not be less then 0");}
 
-      newLayer.id = id;
+      newLayer.setId(id);
       
       for (int i = 0; i < layers.size(); i++) {
          NBSLayer layer = layers.get(i);
@@ -51,7 +59,7 @@ public class NBSSong {
    public void addInstrument(NBSInstrument newInstrument, int id) {
       if (id < 0) {throw new IllegalArgumentException("instrumentId can not be less then 0");}
 
-      newInstrument.id = id;
+      newInstrument.setId(id);
       
       for (int i = 0; i < layers.size(); i++) {
          NBSInstrument instrument = instruments.get(i);

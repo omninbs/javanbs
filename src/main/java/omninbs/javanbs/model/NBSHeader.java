@@ -1,5 +1,11 @@
 package omninbs.javanbs.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import java.io.DataInputStream;
+import java.io.IOException;
+
 public class NBSHeader {
    private int version;
    private int defaultInstruments;
@@ -24,7 +30,7 @@ public class NBSHeader {
    private int loopStart;
    
    public static List<NBSNote> readNotes(DataInputStream dis) throws IOException {
-      
+      throw new IllegalArgumentException("TODO!");
    }
    
    public void writeNotes(DataInputStream dis) throws IOException {

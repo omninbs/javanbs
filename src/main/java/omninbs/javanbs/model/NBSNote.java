@@ -1,5 +1,8 @@
 package omninbs.javanbs.model;
 
+import java.io.DataInputStream;
+import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +27,7 @@ public class NBSNote {
    }
 
    public static List<NBSNote> readNotes(DataInputStream dis) throws IOException {
-      
+      throw new IllegalArgumentException("TODO!");
    }
    
    public void writeNotes(DataInputStream dis) throws IOException {
@@ -39,7 +42,7 @@ public class NBSNote {
    }
 
    public void setPitch(int newPitch) {
-      if (-32768 > newPitch || newpitch > 32768) {throw new IllegalArgumentException("pitch needs to be a number between -32,768 and 32,768");}
+      if (-32768 > newPitch || newPitch > 32768) {throw new IllegalArgumentException("pitch needs to be a number between -32,768 and 32,768");}
       this.pitch = newPitch;
    }
 

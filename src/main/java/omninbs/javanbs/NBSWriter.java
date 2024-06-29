@@ -1,5 +1,10 @@
 package omninbs.javanbs;
 
+import java.io.DataInputStream;
+import java.io.IOException;
+
+import omninbs.javanbs.model.NBSSong;
+
 public class NBSWriter {
    public static void writeBytes(DataInputStream dis, int data, int type) throws IOException {
       
