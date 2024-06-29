@@ -32,14 +32,14 @@ public class NBSHeader {
        // Constructor
     public NBSHeader(String name) {
         this.name = name;
-        this.version = 0;
-        this.defaultInstruments = 0;
+        this.version = 5;
+        this.defaultInstruments = 15;
         this.length = 0;
-        this.layerCount = 0;
+        this.layerCount = 1;
         this.author = "";
         this.originalAuthor = "";
         this.description = "";
-        this.tempo = 0;
+        this.tempo = 20;
         this.autoSaving = 0;
         this.autoSavingDuration = 0;
         this.timeSignature = 0;
