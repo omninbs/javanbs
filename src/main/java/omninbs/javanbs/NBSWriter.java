@@ -7,15 +7,15 @@ public enum Binary {
 }
 
 public class NBSWriter {
-   public void writeBytes(DataInputStream dis, int data, Binary type) throws IOException {
+   public static void writeBytes(DataInputStream dis, int data, Binary type) throws IOException {
       
    }
 
-   public void writeString(DataInputStream dis, String string) throws IOException {
+   public static void writeString(DataInputStream dis, String string) throws IOException {
       
    }
 
-   public void writeSong(DataInputStream dis, NBSong song, int version) throws IOException {
+   public static void writeSong(DataInputStream dis, NBSong song, int version) throws IOException {
       
    }
 }
