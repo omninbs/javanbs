@@ -11,14 +11,14 @@ public class NBSNote {
    private int tick;
 
    public NBSNote(int instrument, int key, int pitch, int volume, int stereo) {
-      setInstrument(instrument);
-      setKey(key);
-      setPitch(pitch);
-      setVolume(volume);
-      setStereo(stereo);
+      this.instrument = instrument;
+      this.key = key;
+      this.pitch = pitch;
+      this.volume = volume;
+      this.stereo = stereo;
 
-      setLayer(-1);
-      setTick(-1);
+      this.layer = -1;
+      this.tick = -1;
    }
 
    public static List<NBSNote> readNotes(DataInputStream dis) throws IOException {
