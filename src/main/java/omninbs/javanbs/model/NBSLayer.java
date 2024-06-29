@@ -4,10 +4,10 @@ public class NBSLayer {
    private int volume;
    private int stereo;
 
-   public NBSLayer(String name) {
+   public NBSLayer(String name, int volume) {
       this.name = name;
       this.lock = false;
-      this.volume = 100;
+      this.volume = volume;
       this.stereo = 0;
    }
 
