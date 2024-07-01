@@ -36,10 +36,41 @@ public class NBSWriter {
       }
    }
 
-   public static void writeSong(FileOutputStream fos, NBSSong song, int version) throws IOException {
+   public static void writeSong(String file, NBSSong song) throws IOException { 
+      writeSong(file, song, 5);
+   }
+
+   public static void writeSong(String file, NBSSong song, int version) throws IOException { 
+   try (FileOutputStream fos = new FileOutputStream(file)) {
       song.getHeader().setVersion(version);
 
       song.getHeader().writeHeader(fos);
+   
+      
+      int prevTick = -1; int prevLayer = -1;
+      
+      for (NBSNote note : song.getNotes()) {
+         if (note.getTick() - prevTick > 0) {
+            if (prevTick > -1) {writeBytes(fos, 0, 2);}
+            writeBytes(fos, note.getTick() - prevTick, 2);
+            prevLayer = -1;
+         }
+
+         writeBytes(fos, note.getLayer() - prevLayer, 2);
+
+         writeBytes(fos, note.getInstrument(), 1);
+         writeBytes(fos, note.getKey(), 1);
+
+         if (version >= 4) {  
+            writeBytes(fos, note.getVolume(), 1);
+            writeBytes(fos, note.getStereo(), 1, false);
+            writeBytes(fos, note.getPitch(), 2);
+         }
+
+         prevTick = note.getTick(); prevLayer = note.getLayer();
+      }
+
+      writeBytes(fos, 0, 2); writeBytes(fos, 0, 2);
 
       for (NBSLayer layer : song.getLayers()) {
          layer.writeLayer(fos, version);
@@ -49,5 +80,5 @@ public class NBSWriter {
       for (NBSInstrument instrument : song.getInstruments()) {
          instrument.writeInstrument(fos, version);
       }
-   }
+   }}
 }
