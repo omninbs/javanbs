@@ -34,8 +34,6 @@ public class NBSReader {
          result = (result << shift) >> shift;
       }
       
-      System.out.println(result);
-
       return result;
    }
 
@@ -44,11 +42,8 @@ public class NBSReader {
    public static String readString(FileInputStream fis) throws IOException {
       int len = readBytes(fis, 4);
 
-      System.out.println(" - len - ");
-      
       StringBuilder result = new StringBuilder();
       for (int i = 0; i < len; i++) {
-         System.out.println("char!");
          int byteRead = fis.read();
          if (byteRead == -1) {
             break;
@@ -56,8 +51,6 @@ public class NBSReader {
          
          result.append((char) byteRead);
       }
-
-      System.out.println(" - String - ");
 
       return result.toString();
    }
