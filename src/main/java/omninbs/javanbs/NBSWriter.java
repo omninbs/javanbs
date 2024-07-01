@@ -18,7 +18,7 @@ public class NBSWriter {
             fos.write(value & 0xFF);
          }
       } else {
-         for (int i = bytes - 1; i >= 0; i--) {
+         for (int i = 0; i < bytes; i++) {
             fos.write((value >> (8 * i)) & 0xFF);
          }
       }

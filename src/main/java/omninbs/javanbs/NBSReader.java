@@ -24,14 +24,17 @@ public class NBSReader {
 
       int result = 0;
 
+      // Little-endian conversion
       for (int i = 0; i < bytes; i++) {
-         result |= (buffer[i] & 0xFF) << (8 * (bytes - 1 - i));
+         result |= (buffer[i] & 0xFF) << (8 * i);
       }
 
       if (signed && bytes < 4) {
          int shift = 8 * (4 - bytes);
          result = (result << shift) >> shift;
       }
+      
+      System.out.println(result);
 
       return result;
    }
@@ -40,9 +43,12 @@ public class NBSReader {
 
    public static String readString(FileInputStream fis) throws IOException {
       int len = readBytes(fis, 4);
+
+      System.out.println(" - len - ");
       
       StringBuilder result = new StringBuilder();
       for (int i = 0; i < len; i++) {
+         System.out.println("char!");
          int byteRead = fis.read();
          if (byteRead == -1) {
             break;
@@ -51,6 +57,8 @@ public class NBSReader {
          result.append((char) byteRead);
       }
 
+      System.out.println(" - String - ");
+
       return result.toString();
    }
 
@@ -58,7 +66,9 @@ public class NBSReader {
       NBSSong song = new NBSSong("");
       
       try (FileInputStream fis = new FileInputStream(file)) {
+         System.out.println("header start!");
          song.setHeader(NBSHeader.readHeader(fis));
+         System.out.println("notes start!");
 
          int field = 0; int tick = -1; int layer = -1; NBSNote note = new NBSNote(0, 0, 0, 0, 0);
 
