@@ -1,6 +1,7 @@
 package omninbs.javanbs.model;
 
-import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import omninbs.javanbs.NBSReader;
@@ -21,22 +22,22 @@ public class NBSInstrument {
    }
 
 
-   public static NBSInstrument readInstrument(DataInputStream dis, int version) throws IOException {
+   public static NBSInstrument readInstrument(FileInputStream fis, int version) throws IOException {
       NBSInstrument instrument = new NBSInstrument(
-         NBSReader.readString(dis),
-         NBSReader.readString(dis),
-         NBSReader.readBytes(dis, 1),
-         NBSReader.readBytes(dis, 1) != 0
+         NBSReader.readString(fis),
+         NBSReader.readString(fis),
+         NBSReader.readBytes(fis, 1),
+         NBSReader.readBytes(fis, 1) != 0
       );
 
       return instrument;
    }
    
-   public void writeLayer(DataInputStream dis, int version) throws IOException {
-      NBSWriter.writeString(dis, this.name);
-      NBSWriter.writeString(dis, this.file);
-      NBSWriter.writeBytes(dis, this.key, 1);
-      NBSWriter.writeBytes(dis, this.piano ? 1 : 0, 1);
+   public void writeLayer(FileOutputStream fos, int version) throws IOException {
+      NBSWriter.writeString(fos, this.name);
+      NBSWriter.writeString(fos, this.file);
+      NBSWriter.writeBytes(fos, this.key, 1);
+      NBSWriter.writeBytes(fos, this.piano ? 1 : 0, 1);
    }
 
 
