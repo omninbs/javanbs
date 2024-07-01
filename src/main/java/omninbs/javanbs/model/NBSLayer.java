@@ -1,6 +1,7 @@
 package omninbs.javanbs.model;
 
-import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import omninbs.javanbs.NBSReader;
@@ -21,24 +22,24 @@ public class NBSLayer {
    }
 
 
-   public static NBSLayer readLayer(DataInputStream dis, int version) throws IOException {
+   public static NBSLayer readLayer(FileInputStream fis, int version) throws IOException {
       NBSLayer layer = new NBSLayer("", 100);
 
-      layer.name = NBSReader.readString(dis);
-      if (version >= 4) {layer.lock = NBSReader.readBytes(dis, 1) != 0;}
+      layer.name = NBSReader.readString(fis);
+      if (version >= 4) {layer.lock = NBSReader.readBytes(fis, 1) != 0;}
       else {layer.lock = false;}
-      layer.volume = NBSReader.readBytes(dis, 1);
-      if (version >= 2) {layer.stereo = NBSReader.readBytes(dis, 1);}
+      layer.volume = NBSReader.readBytes(fis, 1);
+      if (version >= 2) {layer.stereo = NBSReader.readBytes(fis, 1);}
       else {layer.stereo = 0;}
 
       return layer;
    }
    
-   public void writeLayer(DataInputStream dis, int version) throws IOException {
-      NBSWriter.writeString(dis, this.name);
-      if (version >= 4) {NBSWriter.writeBytes(dis, this.lock ? 1 : 0, 1);}
-      NBSWriter.writeBytes(dis, this.volume, 1);
-      if (version >= 2) {NBSWriter.writeBytes(dis, this.stereo, 1);}
+   public void writeLayer(FileOutputStream fos, int version) throws IOException {
+      NBSWriter.writeString(fos, this.name);
+      if (version >= 4) {NBSWriter.writeBytes(fos, this.lock ? 1 : 0, 1);}
+      NBSWriter.writeBytes(fos, this.volume, 1);
+      if (version >= 2) {NBSWriter.writeBytes(fos, this.stereo, 1);}
    }
 
 
