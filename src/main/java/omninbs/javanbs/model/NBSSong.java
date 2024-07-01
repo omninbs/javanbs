@@ -20,7 +20,6 @@ public class NBSSong {
    public NBSSong(String name) {
       instruments = new ArrayList<>();
       layers = new ArrayList<>();
-      addLayer(new NBSLayer("default", 100), 0);
       notes = new ArrayList<>();
       header = new NBSHeader(name);
    }
@@ -75,4 +74,7 @@ public class NBSSong {
    public List<NBSLayer> getLayers() {return layers;}
    
    public List<NBSNote> getNotes() {return notes;}
+
+
+   public void setHeader(NBSHeader header) {this.header = header;}
 }
