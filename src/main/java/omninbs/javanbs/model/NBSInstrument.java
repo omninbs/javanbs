@@ -33,7 +33,7 @@ public class NBSInstrument {
       return instrument;
    }
    
-   public void writeLayer(FileOutputStream fos, int version) throws IOException {
+   public void writeInstrument(FileOutputStream fos, int version) throws IOException {
       NBSWriter.writeString(fos, this.name);
       NBSWriter.writeString(fos, this.file);
       NBSWriter.writeBytes(fos, this.key, 1);

@@ -4,6 +4,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import omninbs.javanbs.model.NBSSong;
+import omninbs.javanbs.model.NBSInstrument;
+import omninbs.javanbs.model.NBSHeader;
+import omninbs.javanbs.model.NBSLayer;
+import omninbs.javanbs.model.NBSNote;
 
 public class NBSWriter {
    public static void writeBytes(FileOutputStream fos, int value, int bytes, boolean signed) throws IOException {
@@ -33,6 +37,17 @@ public class NBSWriter {
    }
 
    public static void writeSong(FileOutputStream fos, NBSSong song, int version) throws IOException {
+      song.getHeader().setVersion(version);
+
+      song.getHeader().writeHeader(fos);
+
+      for (NBSLayer layer : song.getLayers()) {
+         layer.writeLayer(fos, version);
+      }
       
+      writeBytes(fos, song.getInstruments().size(), 1, false);
+      for (NBSInstrument instrument : song.getInstruments()) {
+         instrument.writeInstrument(fos, version);
+      }
    }
 }
