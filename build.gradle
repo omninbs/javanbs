@@ -12,7 +12,11 @@ repositories {
 }
 
 dependencies {
-    // Add your dependencies here
+   testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
 }
 
 jar {
