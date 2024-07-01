@@ -24,16 +24,7 @@ public class NBSNote {
 
       this.layer = -1;
       this.tick = -1;
-   }
-
-   public static List<NBSNote> readNotes(DataInputStream dis) throws IOException {
-      throw new IllegalArgumentException("TODO!");
-   }
-   
-   public void writeNotes(DataInputStream dis) throws IOException {
-      
-   }
-   
+   } 
 
    // setters
    public void setVolume(int newVolume) {
